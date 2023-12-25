@@ -5,7 +5,7 @@ export const defaultUser: LocalGitHubUser = {
   avatar: 'https://avatars.githubusercontent.com/u/115712538?v=4',
   name: 'Igor Mokhov',
   company: null,
-  blog: '',
+  blog: 'https://github.com/IgorMokhov',
   location: null,
   bio: 'Frontend Developer\r\n',
   twitter: null,

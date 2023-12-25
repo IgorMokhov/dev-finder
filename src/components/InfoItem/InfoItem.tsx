@@ -10,7 +10,6 @@ export const InfoItem = ({ icon, text, isLink }: InfoItemProps) => {
   const currentText = text || 'Not Available';
   let currentHref = '';
 
-  
   if (isLink) {
     currentHref = text && text.startsWith('http') ? text : `https://${text}`;
   }
@@ -24,9 +23,9 @@ export const InfoItem = ({ icon, text, isLink }: InfoItemProps) => {
             className={styles.link}
             href={currentHref}
             target="_blank"
-            ref="noreferrer"
+            rel="noreferrer"
           >
-            currentText
+            {currentText}
           </a>
         ) : (
           currentText
