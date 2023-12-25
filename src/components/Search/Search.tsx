@@ -1,7 +1,6 @@
-import { useState } from 'react';
 import { ReactComponent as SearchIcon } from 'assets/icon-search.svg';
-import styles from './Search.module.scss';
 import { Button } from 'components/Button';
+import styles from './Search.module.scss';
 
 interface SearchProps {
   hasError: boolean;
