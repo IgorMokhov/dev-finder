@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import { ReactComponent as SearchIcon } from 'assets/icon-search.svg';
 import { Button } from 'components/Button';
 import styles from './Search.module.scss';
@@ -12,6 +13,8 @@ type FormFields = {
 };
 
 export const Search = ({ hasError, onSubmit }: SearchProps) => {
+  const inputRef = useRef<HTMLInputElement | null>(null);
+
   const handleSubmit = (
     event: React.FormEvent<HTMLFormElement & FormFields>
   ) => {
@@ -24,6 +27,19 @@ export const Search = ({ hasError, onSubmit }: SearchProps) => {
     }
   };
 
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.code === 'Enter') {
+        if (inputRef && inputRef.current) {
+          inputRef.current.focus();
+        }
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
+
   return (
     <form onSubmit={handleSubmit} autoComplete="off">
       <div className={styles.search}>
@@ -31,6 +47,7 @@ export const Search = ({ hasError, onSubmit }: SearchProps) => {
           <SearchIcon />
         </label>
         <input
+          ref={inputRef}
           type="text"
           className={styles.textField}
           id="search"
